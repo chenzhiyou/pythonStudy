@@ -1,3 +1,5 @@
+import requests
+
 from WebSelenium.ApiTestStudy.utils.utils import Utils
 
 
@@ -6,3 +8,7 @@ class BaseApi:
 
     def jsonpath(self, expr):
         return Utils.jsonpath(self.json_data, expr)
+
+    def request(self, method, url, **kwargs):
+        self.json_data = requests.request(method=method, url=url, **kwargs)
+        return self.json_data
